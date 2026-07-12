@@ -1,0 +1,2 @@
+CREATE INDEX "announcement_reactions_announcement_id_emoji_idx" ON "announcement_reactions" ("announcement_id","emoji");--> statement-breakpoint
+CREATE INDEX "submissions_created_at_idx" ON "submissions" ("created_at");

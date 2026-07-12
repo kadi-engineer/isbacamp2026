@@ -1,0 +1,23 @@
+{
+  "name": "ISBA Summer Camp 2026",
+  "short_name": "ISBA Camp",
+  "description": "West Central Region — ISBA Summer Camp 2026 companion app.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f2f54",
+  "theme_color": "#2389e2",
+  "icons": [
+    {
+      "src": "/.netlify/images?url=/logo-emblem.png&w=192&fm=png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/.netlify/images?url=/logo-emblem.png&w=512&fm=png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

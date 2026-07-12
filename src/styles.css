@@ -1,0 +1,136 @@
+@import "tailwindcss" source("../");
+
+/* ── ISBA Summer Camp 2026 design tokens ──────────────────────────────────────
+   Pulled from the camp banner: a bright sky-blue palette over the soft city
+   skyline, with the slogan's vivid blue as the primary accent. Rounded,
+   friendly type keeps it legible and inviting for middle- and high-school
+   students. */
+@theme {
+  --font-display: "Fredoka", ui-rounded, system-ui, sans-serif;
+  --font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+
+  /* Sky blue — primary accent (matches the banner slogan blue) */
+  --color-ember-50: #eef7ff;
+  --color-ember-100: #d8edff;
+  --color-ember-200: #b4dbff;
+  --color-ember-300: #80c2fb;
+  --color-ember-400: #49a4f2;
+  --color-ember-500: #2389e2;
+  --color-ember-600: #176fc4;
+  --color-ember-700: #175aa0;
+  --color-ember-800: #184c83;
+  --color-ember-900: #173f6c;
+
+  /* Deep banner blue — used for the darker gradient stops */
+  --color-brick-500: #1d5a93;
+  --color-brick-600: #184c83;
+  --color-brick-700: #143c69;
+
+  /* Marigold — soft golden accent for highlights (chaperone, pinned, help) */
+  --color-marigold-200: #fde9b3;
+  --color-marigold-300: #fbd36b;
+  --color-marigold-400: #f7b733;
+  --color-marigold-500: #f0a017;
+  --color-marigold-600: #d4830f;
+
+  /* Dusk — slate-blue text and secondary surfaces */
+  --color-dusk-50: #f3f6f9;
+  --color-dusk-100: #e3ebf2;
+  --color-dusk-200: #c5d6e3;
+  --color-dusk-300: #9bb6cd;
+  --color-dusk-400: #6f91af;
+  --color-dusk-500: #4f7191;
+  --color-dusk-600: #3d5973;
+  --color-dusk-700: #32495d;
+  --color-dusk-800: #2a3b4b;
+  --color-dusk-900: #1f2b37;
+
+  /* Navy — top admin bar and modal overlays */
+  --color-bark-700: #1d3a5c;
+  --color-bark-800: #142a44;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-6px); }
+  80%       { transform: translateX(6px); }
+}
+
+/* Gentle bob for the hero emblem on the lock screen */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+/* Springy entrance used for cards / tab content */
+@keyframes pop-in {
+  0%   { opacity: 0; transform: translateY(14px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Slow drift of the blue gradient behind headers */
+@keyframes sunset-drift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+.animate-float    { animation: float 4.5s ease-in-out infinite; }
+.animate-pop-in   { animation: pop-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Reusable blue wash for hero / banner / modal header surfaces */
+.sunset-wash {
+  background-image:
+    linear-gradient(135deg,
+      var(--color-ember-700) 0%,
+      var(--color-ember-500) 50%,
+      var(--color-ember-400) 100%);
+  background-size: 200% 200%;
+  animation: sunset-drift 14s ease-in-out infinite;
+}
+
+/* Soft city-skyline illustration behind every in-app page, the way it was
+   before the rebrand. A light blue veil keeps card text readable. */
+.app-bg {
+  background-color: #dcefff;
+  background-image:
+    linear-gradient(rgba(220, 239, 255, 0.15), rgba(220, 239, 255, 0.35)),
+    url('/.netlify/images?url=/bg-skyline.jpeg&w=1280');
+  background-size: cover;
+  background-position: bottom center;
+  background-attachment: fixed;
+}
+
+/* The login screen uses the same city-skyline background as the rest of the
+   app, just shown a few shades darker behind the keypad. */
+.login-bg {
+  background-color: #b9d9f5;
+  background-image:
+    linear-gradient(rgba(15, 39, 64, 0.58), rgba(15, 39, 64, 0.78)),
+    url('/.netlify/images?url=/bg-skyline.jpeg&w=1280');
+  background-size: cover;
+  background-position: bottom center;
+  background-attachment: fixed;
+}
+
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+body {
+  @apply m-0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pop-in,
+  .sunset-wash { animation: none; }
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
